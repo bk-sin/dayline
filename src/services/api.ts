@@ -2,8 +2,7 @@ import axios from "axios";
 
 // Configuración base de Axios
 const api = axios.create({
-  baseURL:
-    process.env.EXPO_PUBLIC_API_URL || "https://jsonplaceholder.typicode.com",
+  baseURL: process.env.EXPO_PUBLIC_API_URL,
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

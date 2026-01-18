@@ -1,107 +1,197 @@
-import { Image } from "expo-image";
-import { Platform, StyleSheet } from "react-native";
-
-import { HelloWave } from "@/components/common/hello-wave";
-import ParallaxScrollView from "@/components/common/parallax-scroll-view";
-import { ThemedText } from "@/components/common/themed-text";
-import { ThemedView } from "@/components/common/themed-view";
-import { Link } from "expo-router";
+import { useState } from "react";
+import { View, Alert } from "react-native";
+import { Button, Input } from "@/components/common/ui";
+import { Screen } from "@/components/common/ui/screen";
+import { Typography } from "@/components/common/ui/typography";
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <Image
-          source={require("@/assets/images/partial-react-logo.png")}
-          style={styles.reactLogo}
-        />
-      }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit{" "}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}
-          to see changes. Press{" "}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: "cmd + d",
-              android: "cmd + m",
-              web: "F12",
-            })}
-          </ThemedText>{" "}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction
-              title="Action"
-              icon="cube"
-              onPress={() => alert("Action pressed")}
-            />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert("Share pressed")}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert("Delete pressed")}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const [inputValue, setInputValue] = useState("");
+  const [loading, setLoading] = useState(false);
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">
-            npm run reset-project
-          </ThemedText>{" "}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{" "}
-          directory. This will move the current{" "}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  const handlePress = (variant: string) => {
+    Alert.alert("Button Pressed", `Pressed ${variant} button`);
+  };
+
+  const simulateLoading = () => {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 2000);
+  };
+
+  return (
+    <Screen scroll>
+      {/* Header */}
+      <View className="mb-xl mt-m">
+        <Typography variant="header" className="mb-xs">
+          Component Showroom
+        </Typography>
+        <Typography color="muted">
+          Todas las variantes de componentes UI
+        </Typography>
+      </View>
+
+      {/* Typography Section */}
+      <View className="mb-xl">
+        <Typography variant="title" className="mb-m">
+          Typography
+        </Typography>
+
+        <View className="gap-m bg-card p-m rounded-l">
+          <Typography variant="header">Header - Bold XXL</Typography>
+          <Typography variant="title">Title - Medium LG</Typography>
+          <Typography variant="body">Body - Regular MD (Default)</Typography>
+          <Typography variant="label">Label - Medium SM</Typography>
+          <Typography variant="caption">Caption - Bold XS</Typography>
+
+          {/* Colors */}
+          <View className="border-t border-border pt-m mt-m">
+            <Typography variant="label" className="mb-s">
+              Colors:
+            </Typography>
+            <Typography color="primary">Primary Color</Typography>
+            <Typography color="muted">Muted Color</Typography>
+            <Typography color="inverse">Inverse Color (White)</Typography>
+            <Typography color="error">Error Color (Red)</Typography>
+          </View>
+        </View>
+      </View>
+
+      {/* Button Section */}
+      <View className="mb-xl">
+        <Typography variant="title" className="mb-m">
+          Buttons
+        </Typography>
+
+        <View className="gap-m">
+          <Button
+            title="Primary Button"
+            variant="primary"
+            onPress={() => handlePress("primary")}
+          />
+
+          <Button
+            title="Secondary Button"
+            variant="secondary"
+            onPress={() => handlePress("secondary")}
+          />
+
+          <Button
+            title="Outline Button"
+            variant="outline"
+            onPress={() => handlePress("outline")}
+          />
+
+          <Button
+            title="Ghost Button"
+            variant="ghost"
+            onPress={() => handlePress("ghost")}
+          />
+
+          <Button
+            title="Loading Button"
+            variant="primary"
+            isLoading={loading}
+            onPress={simulateLoading}
+          />
+
+          <Button
+            title="Disabled Button"
+            variant="primary"
+            disabled
+            onPress={() => {}}
+          />
+        </View>
+      </View>
+
+      {/* Input Section */}
+      <View className="mb-xl">
+        <Typography variant="title" className="mb-m">
+          Inputs
+        </Typography>
+
+        <View className="gap-m">
+          <Input
+            placeholder="Basic input"
+            value={inputValue}
+            onChangeText={setInputValue}
+          />
+
+          <Input
+            label="Input with label"
+            placeholder="Enter your name..."
+            value={inputValue}
+            onChangeText={setInputValue}
+          />
+
+          <Input
+            label="Input with error"
+            placeholder="example@email.com"
+            error="This field is required"
+          />
+
+          <Input
+            label="Disabled input"
+            placeholder="Can't edit this"
+            value="Disabled value"
+            editable={false}
+          />
+
+          <Input
+            label="Multiline input"
+            placeholder="Enter a long text..."
+            multiline
+            numberOfLines={4}
+            style={{ height: 100, textAlignVertical: "top" }}
+          />
+        </View>
+      </View>
+
+      {/* Screen Variants Info */}
+      <View className="mb-xl">
+        <Typography variant="title" className="mb-m">
+          Screen Component
+        </Typography>
+
+        <View className="bg-card p-m rounded-l gap-s">
+          <Typography variant="label">Props disponibles:</Typography>
+          <Typography color="muted" className="text-xs">
+            • scroll: Contenido scrolleable
+          </Typography>
+          <Typography color="muted" className="text-xs">
+            • safe: SafeAreaView automático
+          </Typography>
+          <Typography color="muted" className="text-xs">
+            • withPadding: Padding horizontal (px-l)
+          </Typography>
+          <Typography color="muted" className="text-xs">
+            • keyboardAvoiding: Ajuste para teclado
+          </Typography>
+        </View>
+      </View>
+
+      {/* Color Palette */}
+      <View className="mb-xxl">
+        <Typography variant="title" className="mb-m">
+          Color Palette
+        </Typography>
+
+        <View className="gap-s">
+          <View className="bg-primary p-m rounded-l">
+            <Typography color="inverse">Primary (#2e3f57)</Typography>
+          </View>
+
+          <View className="bg-background p-m rounded-l border border-border">
+            <Typography>Background (#0a0b0c)</Typography>
+          </View>
+
+          <View className="bg-card p-m rounded-l">
+            <Typography>Card (#16181a)</Typography>
+          </View>
+
+          <View className="bg-ui-navBackground p-m rounded-l border border-ui-navBorder">
+            <Typography>Nav Background (#15171C)</Typography>
+          </View>
+        </View>
+      </View>
+    </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
-  },
-});
