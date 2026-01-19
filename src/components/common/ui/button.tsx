@@ -1,17 +1,18 @@
-import { cn } from "@/utils/cn";
 import {
   TouchableOpacity,
   ActivityIndicator,
   TouchableOpacityProps,
   View,
+  StyleSheet,
 } from "react-native";
 import { Typography } from "./typography";
+import { COLORS, RADIUS, SPACING } from "@/theme";
 
 interface ButtonProps extends TouchableOpacityProps {
   title: string;
   variant?: "primary" | "secondary" | "outline" | "ghost";
   isLoading?: boolean;
-  icon?: React.ReactNode; // Para pasar íconos SVG opcionalmente
+  icon?: React.ReactNode;
 }
 
 export const Button = ({
@@ -19,48 +20,28 @@ export const Button = ({
   variant = "primary",
   isLoading,
   icon,
-  className,
   disabled,
+  style,
   ...props
 }: ButtonProps) => {
-  const baseStyles = "flex-row items-center justify-center rounded-l px-l py-m";
-
-  const variants = {
-    primary: "bg-primary",
-    secondary: "bg-card",
-    outline: "bg-transparent border border-border",
-    ghost: "bg-transparent",
-  };
-
-  // Lógica para el color del texto según el botón
-  const getTextColor = () => {
-    if (variant === "primary") return "inverse"; // Texto blanco sobre fondo oscuro
-    if (variant === "outline") return "primary";
-    return "primary";
-  };
-
   return (
     <TouchableOpacity
-      className={cn(
-        baseStyles,
-        variants[variant],
-        (isLoading || disabled) && "opacity-50", // Estilo visual si está deshabilitado
-        className,
-      )}
+      style={[
+        styles.base,
+        styles[variant],
+        (disabled || isLoading) && styles.disabled,
+        style,
+      ]}
       disabled={isLoading || disabled}
       activeOpacity={0.8}
       {...props}
     >
       {isLoading ? (
-        <ActivityIndicator color="white" />
+        <ActivityIndicator color={COLORS.white} />
       ) : (
         <>
-          {icon && <View className="mr-s">{icon}</View>}
-          <Typography
-            variant="label"
-            color={getTextColor()}
-            className="font-bold text-center"
-          >
+          {icon && <View style={styles.iconContainer}>{icon}</View>}
+          <Typography variant="titleMedium" color="primary">
             {title}
           </Typography>
         </>
@@ -68,3 +49,34 @@ export const Button = ({
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  base: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: RADIUS.base,
+    paddingHorizontal: SPACING.l,
+    paddingVertical: SPACING.md,
+  },
+  primary: {
+    backgroundColor: COLORS.primary,
+  },
+  secondary: {
+    backgroundColor: COLORS.background,
+  },
+  outline: {
+    backgroundColor: "transparent",
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  ghost: {
+    backgroundColor: "transparent",
+  },
+  disabled: {
+    opacity: 0.5,
+  },
+  iconContainer: {
+    marginRight: SPACING.base,
+  },
+});

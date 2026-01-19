@@ -1,44 +1,17 @@
-export const PALETTE = {
-  // Base Colors
-  slate50: "#fafafa",
-  slate100: "#E6E8EB", // text-primary
-  slate400: "#9CA3AF",
-  slate500: "#6B7280", // text-muted
-  slate900: "#0a0b0c", // background-dark
-
-  // Brand
-  blueGray: "#2e3f57", // primary
-  darkGray: "#16181a", // card-dark
-  borderGray: "#232529", // border-dark
-  navBlack: "#15171C", // nav-bg
-  navBorder: "#2A2E38",
-
-  // Utility
-  white: "#FFFFFF",
-  whiteAlpha5: "rgba(255, 255, 255, 0.05)",
-  whiteAlpha40: "rgba(255, 255, 255, 0.40)",
-  toggleOff: "#1f2226",
-};
-
 export const COLORS = {
-  // Semantic names (Nombres por uso)
-  primary: PALETTE.blueGray,
-  background: PALETTE.slate900,
-  card: PALETTE.darkGray,
-  border: PALETTE.borderGray,
-
-  text: {
-    primary: PALETTE.slate100,
-    muted: PALETTE.slate500,
-    inverse: PALETTE.white,
-    nav: PALETTE.slate500,
-    navActive: PALETTE.slate100,
-  },
-
-  ui: {
-    toggleOff: PALETTE.toggleOff,
-    navBackground: PALETTE.navBlack,
-    navBorder: PALETTE.navBorder,
-    iconBackground: PALETTE.whiteAlpha5,
-  },
+  primary: "#2e3f57", // Azul grisáceo (Botones/Activo)
+  background: "#0a0b0c", // Fondo Pantalla (Casi negro)
+  card: "#16181a", // Fondo Tarjetas
+  border: "#232529", // Bordes
+  "nav-bg": "#15171C", // Fondo Navbar
+  "nav-border": "#2A2E38", // Borde Navbar
+  "text-primary": "#E6E8EB", // Blanco (Texto principal)
+  "text-secondary": "#A0AEC0", // Gris (Texto secundario)
+  "text-muted": "#6B7280", // Gris (Texto secundario)
+  "toggle-off": "#1f2226", // Switch inactivo
+  "accent-success": "#456149", // (Definido pero no usado visiblemente)
+  "accent-blue": "#2F5EFF",
+  slate: "#62748e",
+  white: "#FFF",
+  "state-error": "#B00020", // Error (Texto y estados)
 };

@@ -1,37 +1,60 @@
-import { TextInput, View, TextInputProps } from "react-native";
+import { TextInput, View, TextInputProps, StyleSheet } from "react-native";
 import { Typography } from "./typography";
-import { COLORS } from "@/theme";
-import { cn } from "@/utils/cn";
+import { COLORS, RADIUS, SPACING, TEXT_STYLES } from "@/theme";
 
 interface InputProps extends TextInputProps {
   label?: string;
   error?: string;
 }
 
-export const Input = ({ label, error, className, ...props }: InputProps) => {
+export const Input = ({ label, error, style, ...props }: InputProps) => {
   return (
-    <View className="mb-m w-full">
+    <View style={styles.container}>
       {label && (
-        <Typography variant="label" className="mb-xs ml-xs">
+        <Typography variant="label" style={styles.label}>
           {label}
         </Typography>
       )}
 
       <TextInput
-        className={cn(
-          "bg-ui-inputBackground border border-border rounded-m px-m py-s text-text-primary font-main text-md h-12",
-          error && "border-red-500", // Borde rojo si hay error
-          className,
-        )}
-        placeholderTextColor={COLORS.text.muted} // Usamos tu color del tema
+        style={[styles.input, error && styles.inputError, style]}
+        placeholderTextColor={COLORS["text-muted"]}
         {...props}
       />
 
       {error && (
-        <Typography variant="caption" color="error" className="mt-xs ml-xs">
+        <Typography variant="caption" color="error" style={styles.errorText}>
           {error}
         </Typography>
       )}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    marginBottom: SPACING.l,
+    width: "100%",
+  },
+  label: {
+    marginBottom: SPACING.xs,
+    marginLeft: SPACING.xs,
+  },
+  input: {
+    backgroundColor: COLORS.background,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    borderRadius: RADIUS.base,
+    paddingHorizontal: SPACING.l,
+    paddingVertical: SPACING.md,
+    color: COLORS["text-primary"],
+    ...TEXT_STYLES.titleMedium,
+  },
+  inputError: {
+    borderColor: COLORS["state-error"],
+  },
+  errorText: {
+    marginTop: SPACING.xs,
+    marginLeft: SPACING.xs,
+  },
+});

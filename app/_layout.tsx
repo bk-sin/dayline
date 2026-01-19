@@ -1,4 +1,3 @@
-import "../global.css";
 import { Stack } from "expo-router";
 import "react-native-reanimated";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -11,6 +10,8 @@ import {
 } from "@expo-google-fonts/manrope";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { setBackgroundColorAsync } from "expo-system-ui";
+import { COLORS } from "@/theme";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,10 +25,6 @@ const queryClient = new QueryClient({
   },
 });
 
-export const unstable_settings = {
-  anchor: "(tabs)",
-};
-
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
     Manrope_400Regular,
@@ -35,6 +32,10 @@ export default function RootLayout() {
     Manrope_600SemiBold,
     Manrope_700Bold,
   });
+
+  useEffect(() => {
+    setBackgroundColorAsync(COLORS.background);
+  }, []);
 
   useEffect(() => {
     if (fontsLoaded || fontError) {
@@ -48,8 +49,12 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Stack>
-        <Stack.Screen name="(tabs)" />
+      <Stack
+        screenOptions={{
+          contentStyle: { backgroundColor: COLORS.background },
+        }}
+      >
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
     </QueryClientProvider>
   );
