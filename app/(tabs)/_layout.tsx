@@ -1,10 +1,10 @@
-import { COLORS, SPACING } from "@/theme";
 import { Tabs } from "expo-router";
-import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Circle, Settings, TrendingUp } from "lucide-react-native";
-import { Typography } from "@/components/common/ui";
+import React from "react";
 import { View, StyleSheet } from "react-native";
+import { Typography } from "@/components/common/ui";
+import { COLORS, SPACING } from "@/theme";
 
 export default function TabLayout() {
   return (
@@ -73,7 +73,7 @@ export default function TabLayout() {
 
 const styles = StyleSheet.create({
   tabBar: {
-    backgroundColor: "rgba(255,255,255,0.05)",
+    backgroundColor: COLORS["nav-bg"],
     borderTopWidth: 1,
     borderTopColor: COLORS.border,
     paddingTop: SPACING.l,

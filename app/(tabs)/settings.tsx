@@ -3,7 +3,10 @@ import { Screen, Typography } from "@/components/common/ui";
 
 export default function SettingsScreen() {
   return (
-    <Screen>
+    <Screen
+      headerTitle="Settings"
+      headerSubtitle="App settings and preferences"
+    >
       <View style={styles.container}>
         <Typography variant="titleLarge" color="primary">
           Settings

@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
 import {
   Dumbbell,
   Terminal,
@@ -7,6 +5,8 @@ import {
   Utensils,
   Scale,
 } from "lucide-react-native";
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
 import { LogItem } from "@/components/common";
 import { Button, Screen } from "@/components/common/ui";
 

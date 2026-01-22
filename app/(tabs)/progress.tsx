@@ -3,7 +3,7 @@ import { Screen, Typography } from "@/components/common/ui";
 
 export default function ProgressScreen() {
   return (
-    <Screen>
+    <Screen headerTitle="Progress" headerSubtitle="">
       <View style={styles.container}>
         <Typography variant="titleLarge" color="primary">
           Progress
