@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-unused-styles */
 import { Text, TextProps, StyleSheet } from "react-native";
 import { COLORS, TEXT_STYLES } from "@/theme";
 
@@ -15,6 +16,7 @@ export const Typography = ({
   return <Text style={[styles[variant], styles[color], style]} {...props} />;
 };
 
+// Los estilos variant/color están usados dinámicamente via styles[variant] y styles[color]
 const styles = StyleSheet.create({
   ...TEXT_STYLES,
   primary: {

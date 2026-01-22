@@ -5,8 +5,8 @@ import {
   View,
   StyleSheet,
 } from "react-native";
-import { Typography } from "./typography";
 import { COLORS, RADIUS, SPACING } from "@/theme";
+import { Typography } from "./typography";
 
 interface ButtonProps extends TouchableOpacityProps {
   title: string;
@@ -50,6 +50,8 @@ export const Button = ({
   );
 };
 
+/* eslint-disable react-native/no-unused-styles */
+// Los estilos primary/secondary/outline/ghost están usados dinámicamente via styles[variant]
 const styles = StyleSheet.create({
   base: {
     flexDirection: "row",
@@ -60,18 +62,18 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING.md,
   },
   primary: {
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.white,
   },
   secondary: {
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.slate,
   },
   outline: {
-    backgroundColor: "transparent",
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: COLORS["text-muted"],
+    backgroundColor: COLORS.transparent,
   },
   ghost: {
-    backgroundColor: "transparent",
+    backgroundColor: COLORS.transparent,
   },
   disabled: {
     opacity: 0.5,
