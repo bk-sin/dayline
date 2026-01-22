@@ -1,3 +1,4 @@
+import { History } from "lucide-react-native";
 import React from "react";
 import {
   View,
@@ -11,7 +12,6 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { COLORS, SPACING } from "@/theme";
 import { Header } from "../header";
-import { History } from "lucide-react-native";
 
 export interface ScreenProps extends ViewProps {
   scroll?: boolean;

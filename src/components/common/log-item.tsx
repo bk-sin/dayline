@@ -1,9 +1,9 @@
-import { StyleSheet, TextInput, View } from "react-native";
 import { LucideIcon } from "lucide-react-native";
 import { ReactNode } from "react";
-import { ToggleSwitch, Typography } from "./ui";
-import { Card } from "./card";
+import { StyleSheet, TextInput, View } from "react-native";
 import { COLORS, SPACING, TEXT_STYLES } from "@/theme";
+import { Card } from "./card";
+import { ToggleSwitch, Typography } from "./ui";
 
 interface LogItemProps {
   icon: LucideIcon;
@@ -41,7 +41,7 @@ export const LogItem = ({
       )}
     </View>
     {toggle && toggleValue !== undefined && onToggleChange && (
-      <View style={{ marginLeft: "auto" }}>
+      <View style={styles.toggleContainer}>
         <ToggleSwitch value={toggleValue} onValueChange={onToggleChange} />
       </View>
     )}
@@ -68,6 +68,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  toggleContainer: {
+    marginLeft: "auto",
+  },
   weightInputContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -76,7 +79,7 @@ const styles = StyleSheet.create({
   },
   weightInput: {
     ...TEXT_STYLES.titleMedium,
-    color: "#FFF",
+    color: COLORS.white,
     textAlign: "right",
     width: 60,
     padding: 0,

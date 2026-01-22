@@ -1,7 +1,7 @@
-import { StyleSheet, View } from "react-native";
 import { LucideIcon } from "lucide-react-native";
-import { Typography } from "./ui";
+import { StyleSheet, View } from "react-native";
 import { COLORS, SPACING } from "@/theme";
+import { Typography } from "./ui";
 
 interface HeaderProps {
   overline: string;

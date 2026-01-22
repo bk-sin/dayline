@@ -1,7 +1,7 @@
-import { COLORS, RADIUS, SPACING } from "@/theme";
-import { StyleSheet, View, ViewProps } from "react-native";
-import { ReactNode } from "react";
 import { LucideIcon } from "lucide-react-native";
+import { ReactNode } from "react";
+import { StyleSheet, View, ViewProps } from "react-native";
+import { COLORS, RADIUS, SPACING } from "@/theme";
 
 interface CardProps extends ViewProps {
   children: ReactNode;
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     width: SPACING.xxl,
     height: SPACING.xxl,
-    backgroundColor: "rgba(255,255,255,0.05)",
+    backgroundColor: COLORS["nav-bg"],
     borderRadius: RADIUS.base,
     justifyContent: "center",
     alignItems: "center",

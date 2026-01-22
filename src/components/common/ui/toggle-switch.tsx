@@ -1,4 +1,4 @@
-import { COLORS, RADIUS, SPACING, TEXT_STYLES } from "@/theme";
+import { useEffect } from "react";
 import { StyleSheet, Pressable } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -7,7 +7,7 @@ import Animated, {
   interpolateColor,
   useSharedValue,
 } from "react-native-reanimated";
-import { useEffect } from "react";
+import { COLORS, RADIUS, SPACING, TEXT_STYLES } from "@/theme";
 
 interface ToggleSwitchProps {
   value: boolean;
