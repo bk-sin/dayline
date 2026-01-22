@@ -13,5 +13,6 @@ export const COLORS = {
   "accent-blue": "#2F5EFF",
   slate: "#62748e",
   white: "#FFF",
+  transparent: "transparent", // Para backgrounds transparentes
   "state-error": "#B00020", // Error (Texto y estados)
 };
