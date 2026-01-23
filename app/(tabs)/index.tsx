@@ -1,4 +1,3 @@
-import { Link } from "expo-router";
 import {
   Dumbbell,
   Terminal,
@@ -27,7 +26,6 @@ export default function TodayLog() {
       headerSubtitle="Record your stats for today"
       headerOverline="TODAY, OCT 24"
     >
-      <Link href="/storybook">Open Storybook</Link>
       <View style={styles.scrollContent}>
         <LogItem
           icon={Dumbbell}

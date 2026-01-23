@@ -54,6 +54,7 @@ export default function RootLayout() {
           contentStyle: { backgroundColor: COLORS.background },
         }}
       >
+        <Stack.Screen name="onboarding" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         {__DEV__ && (
           <Stack.Screen

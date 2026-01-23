@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-native";
 import { Home } from "lucide-react-native";
 import { StyleSheet, View } from "react-native";
 import { Button } from "../../src/components/common/ui/button";
+import { COLORS, SPACING } from "../../src/theme";
 
 const meta = {
   title: "UI/Button",
@@ -54,12 +55,14 @@ export const Ghost: Story = {
   },
 };
 
-export const WithIcon: Story = {
-  args: {
-    title: "With Icon",
-    variant: "primary",
-    icon: <Home size={20} color="#0a0b0c" />,
-  },
+export const WithIcon = {
+  render: () => (
+    <Button
+      title="With Icon"
+      variant="primary"
+      icon={<Home size={20} color={COLORS.background} />}
+    />
+  ),
 };
 
 export const Loading: Story = {
@@ -88,7 +91,7 @@ export const AllVariants = {
       <Button
         title="With Icon"
         variant="primary"
-        icon={<Home size={20} color="#0a0b0c" />}
+        icon={<Home size={20} color={COLORS.background} />}
       />
       <Button title="Loading" variant="primary" isLoading />
       <Button title="Disabled" variant="primary" disabled />
@@ -98,10 +101,10 @@ export const AllVariants = {
 
 const styles = StyleSheet.create({
   decorator: {
-    padding: 16,
-    gap: 12,
+    padding: SPACING.md,
+    gap: SPACING.md,
   },
   allVariants: {
-    gap: 12,
+    gap: SPACING.md,
   },
 });

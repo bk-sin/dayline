@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Circle, Settings, TrendingUp } from "lucide-react-native";
+import { Circle, Settings, TrendingUp, CheckCircle } from "lucide-react-native";
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Typography } from "@/components/common/ui";
@@ -35,6 +35,23 @@ export default function TabLayout() {
                 />
                 <Typography variant="caption" style={{ color }}>
                   TODAY
+                </Typography>
+              </View>
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="logged"
+          options={{
+            tabBarIcon: ({ color, focused }) => (
+              <View style={styles.tabItem}>
+                <CheckCircle
+                  size={22}
+                  color={color}
+                  fill={focused ? color : "transparent"}
+                />
+                <Typography variant="caption" style={{ color }}>
+                  LOGGED
                 </Typography>
               </View>
             ),
