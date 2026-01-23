@@ -1,8 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react-native";
+import type { Meta } from "@storybook/react-native";
 import { Dumbbell, Code, Beer } from "lucide-react-native";
 import { StyleSheet, View } from "react-native";
 import { Card } from "../../src/components/common/card";
 import { Typography } from "../../src/components/common/ui/typography";
+import { SPACING } from "../../src/theme";
 
 const meta = {
   title: "Components/Card",
@@ -19,41 +20,38 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
-  args: {
-    children: <Typography variant="body">Card content</Typography>,
-  },
+export const Default = {
+  render: () => (
+    <Card>
+      <Typography variant="body">Card content</Typography>
+    </Card>
+  ),
 };
 
-export const WithIcon: Story = {
-  args: {
-    icon: Dumbbell,
-    children: (
+export const WithIcon = {
+  render: () => (
+    <Card icon={Dumbbell}>
       <View>
         <Typography variant="titleMedium">Exercise</Typography>
         <Typography variant="caption" color="muted">
           Daily workout
         </Typography>
       </View>
-    ),
-  },
+    </Card>
+  ),
 };
 
-export const Active: Story = {
-  args: {
-    active: true,
-    icon: Code,
-    children: (
+export const Active = {
+  render: () => (
+    <Card icon={Code} active>
       <View>
         <Typography variant="titleMedium">Side Project</Typography>
         <Typography variant="caption" color="muted">
           Working on code
         </Typography>
       </View>
-    ),
-  },
+    </Card>
+  ),
 };
 
 export const MultipleCards = {
@@ -100,9 +98,9 @@ export const MultipleCards = {
 
 const styles = StyleSheet.create({
   decorator: {
-    padding: 16,
+    padding: SPACING.md,
   },
   allVariants: {
-    gap: 12,
+    gap: SPACING.md,
   },
 });
