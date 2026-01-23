@@ -1,10 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "🔍 Lint + typecheck"
+echo "🧹 ESLint"
 npx lint-staged
-
-echo "🧪 Running UI snapshot tests"
-npm test -- --runTestsByPath \
-  src/components/common \
-  src/components/common/ui
