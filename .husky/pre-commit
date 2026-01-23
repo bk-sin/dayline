@@ -1,5 +1,27 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-echo "🧹 ESLint"
+echo "🔍 Lint + typecheck"
 npx lint-staged
+LINT_EXIT_CODE=$?
+
+if [ $LINT_EXIT_CODE -ne 0 ]; then
+  echo ""
+  echo "❌ Lint/typecheck failed!"
+  echo "💡 Fix the errors above before committing"
+  exit 1
+fi
+
+echo ""
+echo "🧪 Running UI snapshot tests"
+npm test
+TEST_EXIT_CODE=$?
+
+if [ $TEST_EXIT_CODE -ne 0 ]; then
+  echo ""
+  echo "❌ Tests failed!"
+  echo "💡 Possible reasons:"
+  echo "   • UI component changed - review snapshots with 'npm test -- -u'"
+  echo "   • Test error - check the output above"
+  exit 1
+fi
+
+echo ""
+echo "✅ All checks passed! Committing..."

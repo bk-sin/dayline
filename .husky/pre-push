@@ -1,5 +1,17 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-echo "🧪 Full test suite"
+echo "🧪 Running full test suite before push"
 npm test
+TEST_EXIT_CODE=$?
+
+if [ $TEST_EXIT_CODE -ne 0 ]; then
+  echo ""
+  echo "❌ Tests failed!"
+  echo "💡 Possible reasons:"
+  echo "   • UI component changed - review snapshots with 'npm test -- -u'"
+  echo "   • Test error - check the output above"
+  echo ""
+  echo "⚠️  Push aborted - fix tests before pushing"
+  exit 1
+fi
+
+echo ""
+echo "✅ All tests passed! Pushing..."
