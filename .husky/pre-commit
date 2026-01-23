@@ -1,4 +1,4 @@
-echo "🔍 Lint + typecheck"
+echo "🔍 Lint + typecheck on staged files"
 npx lint-staged
 LINT_EXIT_CODE=$?
 
@@ -10,18 +10,5 @@ if [ $LINT_EXIT_CODE -ne 0 ]; then
 fi
 
 echo ""
-echo "🧪 Running UI snapshot tests"
-npm test
-TEST_EXIT_CODE=$?
-
-if [ $TEST_EXIT_CODE -ne 0 ]; then
-  echo ""
-  echo "❌ Tests failed!"
-  echo "💡 Possible reasons:"
-  echo "   • UI component changed - review snapshots with 'npm test -- -u'"
-  echo "   • Test error - check the output above"
-  exit 1
-fi
-
-echo ""
-echo "✅ All checks passed! Committing..."
+echo "✅ Lint checks passed! Committing..."
+echo "💡 Tests will run on push"
