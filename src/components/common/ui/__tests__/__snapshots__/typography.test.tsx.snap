@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Typography renders body variant with muted color consistently 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "Manrope_400Regular",
+        "fontSize": 16,
+        "fontWeight": "400",
+      },
+      {
+        "color": "#6B7280",
+      },
+      undefined,
+    ]
+  }
+>
+  Body text
+</Text>
+`;
+
+exports[`Typography renders caption variant consistently 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "Manrope_500Medium",
+        "fontSize": 12,
+        "fontWeight": "500",
+      },
+      {
+        "color": "#FFF",
+      },
+      undefined,
+    ]
+  }
+>
+  Caption
+</Text>
+`;
+
+exports[`Typography renders titleLarge variant consistently 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "Manrope_600SemiBold",
+        "fontSize": 24,
+        "fontWeight": "600",
+      },
+      {
+        "color": "#FFF",
+      },
+      undefined,
+    ]
+  }
+>
+  Title
+</Text>
+`;

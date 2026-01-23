@@ -114,6 +114,7 @@ module.exports = defineConfig([
           allow: [
             "react-native/**", // Permitir react-native internals
             "expo-router/**", // Permitir expo-router internals
+            "expo/metro-config", // Permitir metro config
             "lucide-react-native/**", // Permitir lucide internals
             "@/theme/**", // Permitir theme internals (colors, typography, layout)
             "@/components/common/ui/**", // Permitir UI components directos (Typography, Button, etc)
@@ -138,6 +139,33 @@ module.exports = defineConfig([
     files: ["src/components/common/ui/typography.tsx"],
     rules: {
       "no-restricted-imports": "off",
+    },
+  },
+  // Override para archivos de configuración: permitir imports internos
+  {
+    files: ["*.config.js", "*.config.ts", "eslint.config.js", "jest.setup.ts"],
+    rules: {
+      "import/no-internal-modules": "off",
+    },
+  },
+  // Override para Storybook stories: permitir imports internos
+  {
+    files: [".rnstorybook/**/*.tsx", ".rnstorybook/**/*.ts"],
+    rules: {
+      "import/no-internal-modules": "off",
+      "react-native/no-inline-styles": "off",
+    },
+  },
+  // Override para archivos de test: permitir imports internos y barrel imports
+  {
+    files: [
+      "**/__tests__/**/*.tsx",
+      "**/__tests__/**/*.ts",
+      "**/*.test.tsx",
+      "**/*.test.ts",
+    ],
+    rules: {
+      "import/no-internal-modules": "off",
     },
   },
 ]);

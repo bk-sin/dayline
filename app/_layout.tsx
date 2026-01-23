@@ -55,6 +55,15 @@ export default function RootLayout() {
         }}
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        {__DEV__ && (
+          <Stack.Screen
+            name="storybook"
+            options={{
+              headerShown: false,
+              presentation: "fullScreenModal",
+            }}
+          />
+        )}
       </Stack>
     </QueryClientProvider>
   );

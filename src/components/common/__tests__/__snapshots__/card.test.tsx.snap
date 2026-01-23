@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Card consistently 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#16181a",
+        "borderColor": "#232529",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "padding": 20,
+      },
+      undefined,
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#15171C",
+        "borderRadius": 8,
+        "height": 32,
+        "justifyContent": "center",
+        "marginRight": 16,
+        "width": 32,
+      }
+    }
+  >
+    <View
+      color="#94a3b8"
+      size={20}
+      testID="icon-Dumbbell"
+    />
+  </View>
+  <Text
+    style={
+      [
+        {
+          "fontFamily": "Manrope_500Medium",
+          "fontSize": 18,
+          "fontWeight": "500",
+        },
+        {
+          "color": "#FFF",
+        },
+        undefined,
+      ]
+    }
+  >
+    Exercise
+  </Text>
+</View>
+`;
